@@ -18,7 +18,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information" do
     get login_path
     post login_path, params: {session: {email: @user.email,
-	  password: "password"}}
+	    password: "password"}}
     assert_redirected_to @user
     follow_redirect!
     assert_template "users/show"
@@ -30,7 +30,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   test "login with valid information followed by logout" do
     get login_path
     post login_path, params: {session: {email: @user.email,
-	  password: "password"}}
+	    password: "password"}}
     assert is_logged_in?
     assert_redirected_to @user
     follow_redirect!
@@ -53,7 +53,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as @user, remember_me: "1"
     assert_not_empty cookies["remember_token"]
   end
-
   test "login without remembering" do
     # Log in to set the cookie.
     log_in_as @user, remember_me: "1"
